@@ -36,7 +36,7 @@ export const handler=NextAuth({
         },
         async session({ session, user, token }) {
           const userOfSession=await User.findOne({email:session.user.email})
-          session.user.id=userOfSession._id.toString();
+          session.user.id=userOfSession._id;
           return session
         },
         

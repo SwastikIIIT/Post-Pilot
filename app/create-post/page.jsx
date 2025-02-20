@@ -1,12 +1,11 @@
 'use client'
 import Form from '@/components/Form';
-import { useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 
 const CreatePost = () => {
   
-  // const [submit,setSubmit]=useState(false); // for adding disabling feature on button
   const {data:session,status}=useSession();
   const router=useRouter();
 
@@ -20,7 +19,7 @@ const CreatePost = () => {
   const createPrompt=async (e)=>{
          e.preventDefault();
          try{
-             const apiCall=await fetch("/api/prompt/new",{
+             const apiCall=await fetch('/api/prompt/new',{
               method:'POST',
               body:JSON.stringify(
                 {
@@ -33,6 +32,8 @@ const CreatePost = () => {
             
              if(apiCall.ok)
              router.push("/",{scroll:true});
+
+             console.log(apiCall);
         }
         
         catch(error)
