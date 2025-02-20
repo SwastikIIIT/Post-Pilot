@@ -82,7 +82,7 @@
 }
 
 .outline_btn {
-  @apply rounded-full border border-black bg-transparent py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
+  @apply rounded-full border border-black bg-white py-1.5 px-5 text-black transition-all hover:bg-black hover:text-white text-center text-sm font-inter flex items-center justify-center;
 }
 
 .head_text {
@@ -167,4 +167,10 @@
 
 .flex-between {
   @apply flex justify-between items-center;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
 }

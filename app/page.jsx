@@ -9,7 +9,7 @@ export default function Home() {
         <span className="orange_gradient text-center">AI-Powered Prompts</span>
         </h1>
  
-       <p className="desc text-center">This is an open source tool that orovides useful prompts for chatgGPT and other ai tools.</p>
+       <p className="desc text-center">This is an open source tool that provides useful prompts for ChatgGPT and other ai tools.</p>
        <Feed/>
       </section>
   );
