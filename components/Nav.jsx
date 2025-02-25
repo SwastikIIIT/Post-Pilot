@@ -5,13 +5,14 @@ import React, { useEffect, useState } from "react";
 import {getProviders,signIn,signOut,useSession} from "next-auth/react";
 import {DropdownMenu,DropdownMenuContent,DropdownMenuSeparator,DropdownMenuItem,DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
+import { ModeToggle } from "./ModeToggle";
 
 const Nav = () => {
   const { data: session, status } = useSession();
 
   const [providers, setProviders] = useState(null);
 
-  console.log(session);
+  // console.log(session);
   useEffect(() => {
     async function fetchProvider() {
       const providerList = await getProviders();
@@ -24,15 +25,16 @@ const Nav = () => {
   return (
     <div className="flex justify-between items-center w-full mb-16 pt-3">
       {/* Logo+image */}
-      <Link href="/" className="flex gap-2 justify-center items-center">
-        <Image src="/images/logo.png" alt="Logo" width={50} height={50}></Image>
-        <p className="logo_text">Promptopia</p>
+      <Link href="/" className="flex gap-3 justify-center items-center">
+        <Image src="/images/blog.png" alt="Logo" width={50} height={50}></Image>
+        <p className="logo_text">Post Pilot</p>
       </Link>
 
       {/* Sign out Sign  for Desktop*/}
       <div className="sm:flex hidden">
         {session?.user ? (
           <div className="flex gap-3 md:gap-5">
+          <ModeToggle/>
             <Link href="/create-post" className="black_btn">
               Create Post
             </Link>
@@ -71,7 +73,8 @@ const Nav = () => {
       </div>
 
       {/* Sign in and out for mobile nav */}
-      <div className="sm:hidden flex">
+      <div className="sm:hidden flex gap-3">
+      <ModeToggle/>
         {session?.user ? (
           <DropdownMenu>
             <DropdownMenuTrigger>

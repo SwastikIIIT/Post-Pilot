@@ -1,7 +1,7 @@
 import React from 'react'
 import PromptCard from './PromptCard'
 
-const PrompList = ({postData}) => {
+const PrompList = ({postData,handleTagClick}) => {
   return (
     <div className='prompt_layout mt-16'>
         {postData.map((item=>(

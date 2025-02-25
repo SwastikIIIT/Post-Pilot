@@ -7,17 +7,23 @@ const Feed = () => {
  const [postData,setPostData]=useState([]);
  const [searchText,setSearchText]=useState('');
 
- useEffect(()=>{
+useEffect(()=>{
      const fetchPostData=async()=>{
         const response=await fetch("/api/prompt");
         const posts=await response.json();
         setPostData(posts);
      }
      fetchPostData();
-  },[]) 
+  },[])  
+
+  console.log(postData);
 
 const handleOnchange=(e)=>{
+      
+}
 
+const handleTagClick=()=>{
+  
 }
 
 
@@ -32,7 +38,10 @@ const handleOnchange=(e)=>{
         />
       </form>
 
-      <PrompList postData={postData}/>
+      <PrompList 
+        postData={postData}
+        handleTagClick={handleTagClick}
+       />
     </section>
   )
 }

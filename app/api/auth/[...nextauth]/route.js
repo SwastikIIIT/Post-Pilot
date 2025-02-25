@@ -16,14 +16,17 @@ export const handler=NextAuth({
         async signIn({user,account,profile}) {
           try{
             await connectMongo();
-            
+    
+            //checks if user is in db
             const exist=await User.findOne({email:profile.email});
+           
+            //creates user if not present in db
             if(!exist)
             {
               await User.create({
-                email:profile.email,
-                username:profile.name.replace(" ","").toLowerCase(),
-                image:profile.image
+                email:profile?.email,
+                username:profile?.name.replace(" ","").toLowerCase(),
+                image:profile?.picture //not working
               })
             }
             return true
@@ -34,9 +37,10 @@ export const handler=NextAuth({
             return false;
           }
         },
-        async session({ session, user, token }) {
+        
+          async session({ session, user, token }) {
           const userOfSession=await User.findOne({email:session.user.email})
-          session.user.id=userOfSession._id;
+          session.user.id=userOfSession._id.toString();
           return session
         },
         
