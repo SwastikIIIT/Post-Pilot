@@ -26,7 +26,6 @@ const handleTagClick=()=>{
   
 }
 
-
   return (
     <section className='feed'>
       <form className='relative w-full flex justify-center items-center'>
