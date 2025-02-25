@@ -30,9 +30,6 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
   }
 
 
-
-
-
   return (
     <div className="prompt_card">
        <div className="flex justify-between items-start gap-5">
@@ -61,7 +58,7 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
        </div>
 
       <p className="my-4 font-satoshi text-sm text-gray-500">{post.prompt}</p>
-      <p className="font-inter text-sm blue_gradient cursor-pointer" onClick={handleTagClick}>{post.tag}</p>
+      <p className="font-inter text-sm blue_gradient cursor-pointer">{post.tag.map((tag,index)=>(<span key={index} onClick={()=>handleTagClick(tag)}>#{tag}{' '}</span>))}</p>
 
       {session?.user?.id===post.creator._id && pathname==='/profile' && (
         <div className="mt-5 flex justify-between items-center gap-4 border-t border-gray-100 pt-3">

@@ -26,10 +26,10 @@ const Form = ({handlesubmit,post,setPost,task }) => {
         <input
           value={post?.tag}
           onChange={(e) =>
-            setPost((post) => ({ ...post, tag: e.target.value }))
+            setPost((post) => ({ ...post, tag:e.target.value}))
           }
           className="form_input"
-          placeholder="Add the tags here e.g:-#fun..."
+          placeholder="Add the tags here e.g:-fun separated by comma"
           required
         />
 

@@ -25,7 +25,7 @@ const CreatePost = () => {
                 {
                   userId:session?.user?.id,
                   prompt:post.prompt,
-                  tag:post.tag
+                  tag:post.tag.split(',').map((tag)=>tag.trim())
                 }
               )
              })

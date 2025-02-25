@@ -6,7 +6,7 @@ export async function GET(req,{params})
      try
      {
            await connectMongo();
-           const userId=await params?.userId;
+           const userId=params?.userId;
 
            const userPosts=await Prompt.find({creator:userId}).populate('creator');
 

@@ -27,7 +27,9 @@ const Nav = () => {
       {/* Logo+image */}
       <Link href="/" className="flex gap-3 justify-center items-center">
         <Image src="/images/blog.png" alt="Logo" width={50} height={50}></Image>
-        <p className="logo_text">Post Pilot</p>
+        <h1 className=" font-semibold text-transparent text-3xl sm:text-2xl xl:text-3xl bg-clip-text bg-gradient-to-r from-orange-600 via-yellow-400 to-yellow-700 bg-transparent h-full">
+              Post Pilot
+            </h1>
       </Link>
 
       {/* Sign out Sign  for Desktop*/}

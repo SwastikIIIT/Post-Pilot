@@ -7,7 +7,7 @@ export  async function POST(req,res)
 {
     
     const {userId,prompt,tag}=await req.json();
-    
+   
     try{
          try{
          await connectMongo();
@@ -26,9 +26,13 @@ export  async function POST(req,res)
 
          return new Response(JSON.stringify(dbPrompt),{status:'201'})
     }
-    catch(error)
-    {
-       return new Response("Failed to create new prompt",{status:'500'});
-    }
+    catch (error) {
+      console.error("Detailed error:", {
+        name: error.name,
+        message: error.message,
+        stack: error.stack
+      });
 
+      return new Response(JSON.stringify({ error: error.message }), { status: 500 });
+}
 }
