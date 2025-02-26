@@ -18,7 +18,7 @@ const UpdatePost = () => {
     }
   )
 
-  const createPost=async (e)=>{
+  const updatePost=async (e)=>{
          e.preventDefault();
          try{
              const apiCall=await fetch(`/api/prompt/${postID}`,{
@@ -26,7 +26,7 @@ const UpdatePost = () => {
               body:JSON.stringify(
                 {
                   prompt:post.prompt,
-                  tag:post.tag
+                  tag:post.tag.split(',').map((tag)=>tag.trim())
                 }
               )
              })
@@ -48,7 +48,7 @@ const UpdatePost = () => {
           const response=await update_vali_post.json();
           setPost({
             prompt:response?.prompt,
-            tag:response?.tag
+            tag:response?.tag.join(',')
           })
     }
     fetchPost();
@@ -60,7 +60,7 @@ const UpdatePost = () => {
       post={post}
       task={'Edit'}
       setPost={setPost}
-      handlesubmit={createPost}
+      handlesubmit={updatePost}
     />
     )
 }

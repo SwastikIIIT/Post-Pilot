@@ -2,20 +2,31 @@
 import React, { useEffect, useState } from 'react'
 import PrompList from './PrompList';
 import { Pagination } from 'antd';
+import Loader from './Loader';
 
 const Feed = () => {
 
  const [postData,setPostData]=useState([]);
  const [searchText,setSearchText]=useState('');
+ const [loading,setLoading]=useState(true);
  const [page,setPage]=useState(1);
  const postPerPage=3;
 
 useEffect(()=>{
-     const fetchPostData=async()=>{
+  const fetchPostData=async()=>{
+       try{
         const response=await fetch("/api/prompt");
         const posts=await response.json();
         setPostData(posts);
      }
+    catch(e)
+    {
+          console.log(e);
+    }
+    finally{
+           setLoading(false);
+    }
+  }
      fetchPostData();
   },[])  
 
@@ -37,6 +48,11 @@ const handleTagClick=(tagText)=>{
        setPage(1);
 }
 
+
+if(loading)
+  return (
+     <Loader/>
+  )
   return (
     <section className='feed'>
       <div className='relative w-full flex justify-center items-center'>

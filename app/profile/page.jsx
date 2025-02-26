@@ -9,6 +9,7 @@ const UserProfile = () => {
   const {data:session,status}=useSession();
   const [postData,setPostData]=useState([]);
 
+  
     useEffect(()=>{
           const fetchPostData=async()=>{
             const response=await fetch(`/api/users/${session?.user?.id}/posts`);
@@ -21,9 +22,9 @@ const UserProfile = () => {
 
 
 
-
   return (
     <Profile
+      name={"My"}
       posts={postData}
       setPostData={setPostData}
     />

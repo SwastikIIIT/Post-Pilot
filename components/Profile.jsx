@@ -1,7 +1,7 @@
 import React from 'react'
 import PromptCard from './PromptCard'
 
-const Profile = ({posts,setPostData}) => {
+const Profile = ({name,posts,setPostData}) => {
 
    const handleDelete=async(post)=>{
       const hasConfirmed=confirm("Are you sure you want to delete this post?");
@@ -29,7 +29,7 @@ const Profile = ({posts,setPostData}) => {
 
   return (
     <section className='w-full'>
-        <h1 className='head_text blue_gradient text-left'>My Profile</h1>
+        <h1 className='head_text blue_gradient text-left'>{name} Profile</h1>
         <p className='desc text-left'>Welcome to your personalized page</p>
 
         <div className='mt-10 prompt_layout'>
@@ -37,7 +37,7 @@ const Profile = ({posts,setPostData}) => {
                 <PromptCard
                     key={item._id}
                     post={item}
-                    handleDelete={handleDelete}
+                    handleDelete={()=>handleDelete(item)}
                 />
             ))}
         </div>
