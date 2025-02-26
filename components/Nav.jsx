@@ -6,10 +6,11 @@ import {getProviders,signIn,signOut,useSession} from "next-auth/react";
 import {DropdownMenu,DropdownMenuContent,DropdownMenuSeparator,DropdownMenuItem,DropdownMenuTrigger} from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "./ModeToggle";
+import { usePathname } from "next/navigation";
 
 const Nav = () => {
   const { data: session, status } = useSession();
-
+  const pathname=usePathname();
   const [providers, setProviders] = useState(null);
 
   // console.log(session);
@@ -40,13 +41,15 @@ const Nav = () => {
             <Link href="/create-post" className="black_btn">
               Create Post
             </Link>
-            <button
-              type="button"
-              className="outline_btn"
-              onClick={() => signOut()}
-            >
-              Sign Out
-            </button>
+            { pathname==='/' &&
+              <button
+                type="button"
+                className="outline_btn"
+                onClick={() => signOut()}
+              >
+                Sign Out
+              </button>
+            }
             <Link href="/profile">
               <Image
                 src={session?.user?.image}
@@ -81,11 +84,11 @@ const Nav = () => {
           <DropdownMenu>
             <DropdownMenuTrigger>
               <Image
+               className="rounded-full"
                 src={session?.user?.image}
                 alt="Logo"
-                width={50}
-                height={50}
-                onClick={() => {}}
+                width={40}
+                height={40}
               ></Image>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
@@ -94,7 +97,7 @@ const Nav = () => {
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                <Link href="/create-prompt">Create Prompt</Link>
+                <Link href="/create-prompt">Create Post</Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="w-full p-0">
