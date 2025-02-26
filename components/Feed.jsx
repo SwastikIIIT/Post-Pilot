@@ -58,7 +58,7 @@ const handleTagClick=(tagText)=>{
         align="center" 
         defaultCurrent={1} 
         total={filteredPost.length} 
-        pageSize={}
+        pageSize={postPerPage}
         onChange={(page)=>(setPage(page))}
         showQuickJumper />
     </section>
