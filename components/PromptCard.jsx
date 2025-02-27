@@ -1,5 +1,4 @@
 'use client'
-
 import { useState } from "react"
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -33,10 +32,8 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
   return (
     <div className="prompt_card">
        <div className="flex justify-between items-start gap-5">
-         
             <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-                  <Link href=
-                  {post.creator._id===session?.user?.id?"/profile":`/profile/${post.creator._id}?name=${post.creator.username}`}>
+                  <Link href={post.creator._id===session?.user?.id?"/profile":`/profile/${post.creator._id}?name=${post.creator.username}`}>
                       <Image
                         src={post.creator?.image}
                         alt="USER IMAGE"
@@ -47,17 +44,17 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
                 </Link>
            </div>
                 
-                  <div className="flex flex-col">
-                    <h3 className="font-satoshi font-semibold text-gray-900">{post.creator?.username}</h3>
-                    <p className="font-inter text-sm text-gray-500">{post.creator?.email}</p>
-                  </div>
+           <div className="flex flex-col">
+                <h3 className="font-satoshi font-semibold text-gray-900">{post.creator?.username}</h3>
+                <p className="font-inter text-sm text-gray-500">{post.creator?.email}</p>
+           </div>
 
-              <div className="copy_btn" onClick={handleCopyBtn}>
+           <div className="copy_btn" onClick={handleCopyBtn}>
                 <Image 
                 src={copy?"/images/tick.svg":"/images/copy.svg"} 
                 alt="Copy button"
                 width={12} height={12}/>
-              </div>
+           </div>
        </div>
 
       <p className="my-4 font-satoshi text-sm text-gray-500">{post.prompt}</p>
