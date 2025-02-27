@@ -6,10 +6,11 @@ import Loader from '@/components/Loader';
 
 const UserIDProfile = () => {
      const params=useParams();
-     console.log(params);
      const searchParams=useSearchParams();
      const [loading,setLoading]=useState(true);
      const username=searchParams.get("name");
+     const email=searchParams.get("email");
+     console.log(email);
      
      const [userPost,setUserPost]=useState([]);
 
@@ -35,6 +36,7 @@ const UserIDProfile = () => {
   return (
     <Profile
         name={username}
+        email={email}
         posts={userPost}
     />
   )

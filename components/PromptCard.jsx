@@ -33,13 +33,12 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
     <div className="prompt_card">
        <div className="flex justify-between items-start gap-5">
             <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
-                  <Link href={post.creator._id===session?.user?.id?"/profile":`/profile/${post.creator._id}?name=${post.creator.username}`}>
-                     {/* width=40 height=40 */}
+                  <Link href={post.creator._id===session?.user?.id?"/profile":`/profile/${post.creator._id}?name=${post.creator.username}&email=${post.creator.email}`}>
                       <Image
                         src={post.creator?.image}
                         alt="USER IMAGE"
-                        width={10}
-                        height={10}
+                        width={40}
+                        height={40}
                         className="rounded-full object-contain"
                       />
                 </Link>
@@ -47,7 +46,7 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
                 
            <div className="flex flex-col">
                 <h3 className="font-satoshi font-semibold text-gray-900">{post.creator?.username}</h3>
-                <p className="font-inter text-sm text-gray-500">{post.creator?.email}</p>
+                <p className="font-inter text-sm text-gray-500">{post.creator?.email.slice(0,20)}...</p>
            </div>
 
            <div className="copy_btn" onClick={handleCopyBtn}>

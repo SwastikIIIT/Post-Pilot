@@ -1,7 +1,8 @@
 import React from 'react'
 import PromptCard from './PromptCard'
+import Link from 'next/link';
 
-const Profile = ({name,posts,setPostData}) => {
+const Profile = ({name,posts,setPostData,email}) => {
 
    const handleDelete=async(post)=>{
       const hasConfirmed=confirm("Are you sure you want to delete this post?");
@@ -31,7 +32,8 @@ const Profile = ({name,posts,setPostData}) => {
     <section className='w-full'>
         <h1 className='head_text blue_gradient text-left'>{name} Profile</h1>
         <p className='desc text-left'>Welcome to your personalized page</p>
-
+        <p className='desc text-left'>Email: {email}</p>
+        
         <div className='mt-10 prompt_layout'>
             {posts?.map((item)=>(
                 <PromptCard
