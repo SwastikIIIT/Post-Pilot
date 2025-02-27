@@ -6,7 +6,7 @@ export async function GET(req,res)
 {
     try{
              await connectMongo();
-             const postData=await Prompt.find({}).populate('creator');
+             const postData=await Prompt.find({}).sort({createdAt:-1}).populate('creator');
 
              return new Response(JSON.stringify(postData),{status:'200'});
     }
