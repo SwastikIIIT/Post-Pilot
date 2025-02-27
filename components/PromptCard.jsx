@@ -34,11 +34,12 @@ const PromptCard = ({post,handleDelete,handleTagClick}) => {
        <div className="flex justify-between items-start gap-5">
             <div className="flex-1 flex justify-start items-center gap-3 cursor-pointer">
                   <Link href={post.creator._id===session?.user?.id?"/profile":`/profile/${post.creator._id}?name=${post.creator.username}`}>
+                     {/* width=40 height=40 */}
                       <Image
                         src={post.creator?.image}
                         alt="USER IMAGE"
-                        width={40}
-                        height={40}
+                        width={10}
+                        height={10}
                         className="rounded-full object-contain"
                       />
                 </Link>
