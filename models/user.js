@@ -4,7 +4,7 @@ const UserSchema=new Schema(
     {
           email:{
               type:String,
-              required:[true,"Email is required"],
+              required:[true,"Email is "],
               unique:[true,"Email already exits"]
           },
           username:{
